@@ -61,7 +61,7 @@ export default class Content extends Component {
     align-items: center;
   `;
 
-    
+
     return (
       <ContentContainer>
         {/* 
