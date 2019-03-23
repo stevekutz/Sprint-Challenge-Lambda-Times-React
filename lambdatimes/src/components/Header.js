@@ -31,14 +31,14 @@ const Header = () => {
       text-align: center;
       color: #000;
     `;
-
+/*
     const HeaderSpan = styled.span`
       align-self: flex-end;
       font-size: 11px;
       font-weight: bold;
       letter-spacing: 1px;
     `;
-
+*/
     const HeaderDate = styled.div`
       align-self: flex-end;
       font-size: 11px;
