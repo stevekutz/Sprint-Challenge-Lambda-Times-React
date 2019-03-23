@@ -5,8 +5,6 @@ import Card from './Card';
 import PropTypes from 'prop-types';
 
 const Cards = props => {
-  console.log('CARDS props  ', props);
-
 
   return (
     <div className="cards-container">
@@ -21,7 +19,7 @@ const Cards = props => {
           />
         )
       })}
-      
+
     </div>
   )
 };
