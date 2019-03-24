@@ -7,34 +7,57 @@ export default class Carousel extends Component {
     this.state = {
       carouselImages: [],
       currentIndex: '',
+      length: 0,
     }
+
   }
   componentDidMount(){
     this.setState({
       carouselImages: carouselData,
       currentIndex: 0,
+      length: this.state.carouselImages.length,
+
+    });
 
 
-    })
   }
 
-  leftClick = () => {
 
+  // USE setState here with prevState, simple increment/decrement
+
+  leftClick = () => {
+    this.currentIndex === 0
+      ? this.setState({currentIndex:  this.state.length - 1})
+      : this.setState({currentIndex: this.state.currentIndex - 1}) ;
+
+    console.log('inside of left, currentIndex changed to ', this.state.currentIndex);
+
+   // this.selectedImage();
   };
 
   rightClick = () => {
+    this.currentIndex === this.state.length
+      ? this.setState({currentIndex: 0})
+      : this.setState({currentIndex: this.state.currentIndex + 1});
 
+    console.log('inside of right, currentIndex changed to ', this.currentIndex);
+
+    this.selectedImage();
   };
 
   selectedImage = () => {
     return <img
       src={this.state.carouselImages[this.state.currentIndex]}
-      style={{display: 'block'}} />
+      style={{display: 'block'}}
+      alt = {this.state.currentIndex}
+    />
   };
 
   render(){
+    console.log("something", this.length);
+
     return (
-      <div className="carousel">
+      <div className="carousel"   >
         <div className="left-button" onClick={this.leftClick}>{"<"}</div>
         <div className="right-button" onClick={this.rightClick}>{">"}</div>
         {this.selectedImage()}
