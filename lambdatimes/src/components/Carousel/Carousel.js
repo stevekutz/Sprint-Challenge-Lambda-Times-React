@@ -18,7 +18,7 @@ export default class Carousel extends Component {
 
     });
 
-  this.length =  carouselData.length;
+  this.length =  carouselData.length - 1 ;
   }
 
 
@@ -26,7 +26,7 @@ export default class Carousel extends Component {
 
   leftClick = () => {
     this.state.currentIndex === 0
-      ? this.setState({currentIndex:  this.state.length - 1})
+      ? this.setState({currentIndex:  this.length - 1})
       : this.setState({currentIndex: this.state.currentIndex - 1}) ;
 
     console.log('inside of left, currentIndex changed to ', this.state.currentIndex);
@@ -35,7 +35,7 @@ export default class Carousel extends Component {
   };
 
   rightClick = () => {
-    this.state.currentIndex === this.state.length
+    this.state.currentIndex === this.length
       ? this.setState({currentIndex: 0})
       : this.setState({currentIndex: this.state.currentIndex + 1});
 
