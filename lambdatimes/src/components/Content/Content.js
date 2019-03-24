@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import Tabs from './Tabs';
 import Cards from './Cards';
 import styled from 'styled-components';
-
+import CarouselPlayer from '../Carousel/CarouselPlayer';
 // Importing our tab and card data. No need to change anything here.
-import { tabData, cardData } from '../../data';
+import {tabData, cardData, carouselData} from '../../data';
 
 export default class Content extends Component {
   constructor(props) {
@@ -13,7 +13,8 @@ export default class Content extends Component {
     this.state = {
       selected: 'all',
       tabs: [],
-      cards: []
+      cards: [],
+      carousel: [],
     };
 
   }
@@ -24,6 +25,7 @@ export default class Content extends Component {
     this.setState({
       tabs: tabData,
       cards: cardData,
+      carousel: carouselData,
     })
   }
 
@@ -75,6 +77,7 @@ export default class Content extends Component {
           selectedTab = {this.state.selected}
           selectTabHandler = {this.changeSelected}
         />
+
         <Cards cards={this.filterCards()} />
       </ContentContainer>
     );
