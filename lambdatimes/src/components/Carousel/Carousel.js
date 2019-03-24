@@ -7,7 +7,7 @@ export default class Carousel extends Component {
     this.state = {
       carouselImages: [],
       currentIndex: '',
-      length: 0,
+      maxIndex2: 0,
     }
 
   }
@@ -15,45 +15,56 @@ export default class Carousel extends Component {
     this.setState({
       carouselImages: carouselData,
       currentIndex: 0,
-
+      maxIndex2: this.state.carouselImages.length - 1
     });
-
-  this.length =  carouselData.length - 1 ;
+  // NEED Better name for variable
+  this.maxIndex =  carouselData.length - 1 ;
   }
 
 
   // USE setState here with prevState, simple increment/decrement
-
+/*
   leftClick = () => {
     this.state.currentIndex === 0
-      ? this.setState({currentIndex:  this.length - 1})
+      ? this.setState({currentIndex:  this.maxIndex - 1})
       : this.setState({currentIndex: this.state.currentIndex - 1}) ;
+  };
 
-    console.log('inside of left, currentIndex changed to ', this.state.currentIndex);
+*/
+  leftClick = () => {
+    this.state.currentIndex === 0
+      ? this.setState({currentIndex:  this.maxIndex })
+      : this.setState(prevState => {
+        return {currentIndex: prevState.currentIndex - 1}
+      }) ;
 
-   // this.selectedImage();
+   // console.log('inside of left, currentIndex changed to ', this.state.currentIndex);
+
+
   };
 
   rightClick = () => {
-    this.state.currentIndex === this.length
+    this.state.currentIndex === this.maxIndex
       ? this.setState({currentIndex: 0})
-      : this.setState({currentIndex: this.state.currentIndex + 1});
+      : this.setState(prevState => {
+        return {currentIndex: prevState.currentIndex + 1}
+      });
 
-    console.log('inside of right, currentIndex changed to ', this.currentIndex);
+   // console.log('inside of right, currentIndex changed to ', this.state.currentIndex);
 
-    this.selectedImage();
+
   };
 
   selectedImage = () => {
     return <img
       src={this.state.carouselImages[this.state.currentIndex]}
-      style={{display: 'block'}}
+      style={{display: 'flex'}}
       alt = {this.state.currentIndex}
     />
   };
 
   render(){
-    console.log("something", this.length);
+    console.log("maxIndex2", this.maxIndex2);
 
     return (
       <div className="carousel"   >
