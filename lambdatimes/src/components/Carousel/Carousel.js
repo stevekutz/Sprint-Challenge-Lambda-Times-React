@@ -15,18 +15,17 @@ export default class Carousel extends Component {
     this.setState({
       carouselImages: carouselData,
       currentIndex: 0,
-      length: this.state.carouselImages.length,
 
     });
 
-
+  this.length =  carouselData.length;
   }
 
 
   // USE setState here with prevState, simple increment/decrement
 
   leftClick = () => {
-    this.currentIndex === 0
+    this.state.currentIndex === 0
       ? this.setState({currentIndex:  this.state.length - 1})
       : this.setState({currentIndex: this.state.currentIndex - 1}) ;
 
@@ -36,7 +35,7 @@ export default class Carousel extends Component {
   };
 
   rightClick = () => {
-    this.currentIndex === this.state.length
+    this.state.currentIndex === this.state.length
       ? this.setState({currentIndex: 0})
       : this.setState({currentIndex: this.state.currentIndex + 1});
 
