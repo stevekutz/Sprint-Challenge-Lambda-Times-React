@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 
 const Tabs = props => {
-  console.log('TABS props ', props);
 
   return (
     <div className="tabs">

@@ -7,7 +7,7 @@ export default class Carousel extends Component {
     this.state = {
       carouselImages: [],
       currentIndex: '',
-      maxIndex2: 0,
+      maxIndex2: '',
     }
 
   }
@@ -15,32 +15,21 @@ export default class Carousel extends Component {
     this.setState({
       carouselImages: carouselData,
       currentIndex: 0,
-      maxIndex2: this.state.carouselImages.length - 1
     });
-  // NEED Better name for variable
   this.maxIndex =  carouselData.length - 1 ;
+  this.maxIndex2 =  this.state.carouselImages.length - 1;
+  console.log('CDM DONE');
   }
 
 
   // USE setState here with prevState, simple increment/decrement
-/*
-  leftClick = () => {
-    this.state.currentIndex === 0
-      ? this.setState({currentIndex:  this.maxIndex - 1})
-      : this.setState({currentIndex: this.state.currentIndex - 1}) ;
-  };
-
-*/
   leftClick = () => {
     this.state.currentIndex === 0
       ? this.setState({currentIndex:  this.maxIndex })
       : this.setState(prevState => {
         return {currentIndex: prevState.currentIndex - 1}
       }) ;
-
    // console.log('inside of left, currentIndex changed to ', this.state.currentIndex);
-
-
   };
 
   rightClick = () => {
@@ -49,10 +38,7 @@ export default class Carousel extends Component {
       : this.setState(prevState => {
         return {currentIndex: prevState.currentIndex + 1}
       });
-
    // console.log('inside of right, currentIndex changed to ', this.state.currentIndex);
-
-
   };
 
   selectedImage = () => {
@@ -65,6 +51,7 @@ export default class Carousel extends Component {
 
   render(){
     console.log("maxIndex2", this.maxIndex2);
+    console.log('carousel images length', this.state.carouselImages.length);
 
     return (
       <div className="carousel"   >

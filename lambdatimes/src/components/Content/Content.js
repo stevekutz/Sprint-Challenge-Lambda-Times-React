@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Tabs from './Tabs';
 import Cards from './Cards';
 import styled from 'styled-components';
-import CarouselPlayer from '../Carousel/CarouselPlayer';
+//import CarouselPlayer from '../Carousel/CarouselPlayer';
 // Importing our tab and card data. No need to change anything here.
 import {tabData, cardData, carouselData} from '../../data';
 

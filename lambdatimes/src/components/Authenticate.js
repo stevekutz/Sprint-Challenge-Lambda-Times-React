@@ -5,7 +5,6 @@ import TopBar from '../components/TopBar';
 const withAuthenticate = App =>
   class extends React.Component {
     constructor(props) {
-      console.log('withAutheticate props ', props);
       super(props);
       this.state = {
         logged_IN: false
