@@ -16,8 +16,8 @@ export default class Carousel extends Component {
       carouselImages: carouselData,
       currentIndex: 0,
     });
-  this.maxIndex =  carouselData.length - 1 ;
-  this.maxIndex2 =  this.state.carouselImages.length - 1;
+    this.maxIndex =  carouselData.length - 1 ;
+    this.maxIndex2 =  this.state.carouselImages.length - 1;
   console.log('CDM DONE');
   }
 
@@ -54,7 +54,7 @@ export default class Carousel extends Component {
     console.log('carousel images length', this.state.carouselImages.length);
 
     return (
-      <div className="carousel"   >
+      <div className="carousel">
         <div className="left-button" onClick={this.leftClick}>{"<"}</div>
         <div className="right-button" onClick={this.rightClick}>{">"}</div>
         {this.selectedImage()}
