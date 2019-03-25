@@ -35,6 +35,10 @@ class TopBar extends React.Component {
     }));
   };
 
+  logout = () => {
+    localStorage.removeItem("username");
+    window.location.reload();
+  };
 
   render(){
   return (
@@ -53,6 +57,8 @@ class TopBar extends React.Component {
         <ContainerRight>
           <ContainerRightSpan onClick={this.toggle}
           >LOG IN</ContainerRightSpan>
+          <ContainerRightSpan onClick={this.logout}
+          >{`\u00A0`}{`\u00A0`}{`\u00A0`}{`\u00A0`}LOG OUT</ContainerRightSpan>
         </ContainerRight>
       </TopBarContainer>
       <Modal
