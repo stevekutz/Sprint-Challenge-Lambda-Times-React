@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Content from './components/Content/Content';
 import CarouselPlayer from './components/Carousel/CarouselPlayer';
 import Carousel from './components/Carousel/Carousel';
+import Authenticate from './components/Authenticate';
 import styled from 'styled-components';
 
 const App = () => {
@@ -30,4 +31,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Authenticate(App);

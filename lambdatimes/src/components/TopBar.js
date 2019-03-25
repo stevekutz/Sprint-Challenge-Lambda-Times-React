@@ -1,89 +1,44 @@
 import React from 'react';
-import styled from 'styled-components';
+import {
+  TopBarDiv,
+  TopBarContainer,
+  ContainerLeft,
+  ContainerLeftSpan,
+  ContainerCenter,
+  ContainerCenterSpan,
+  ContainerRight,
+  ContainerRightSpan,
+} from './TopBar_Style';
+
+import { Modal } from "reactstrap";
+import Login from './Login';
 
 // Refactor this component to use styled components and not classNames. 
 // You can find the corresponding CSS in the CSS/index.css file
 
-const TopBar = () => {
+class TopBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+      username: '',
+      password: '',
+      attempts: 0,   // experiment for later,
+    };
 
-  const TopBar = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: none;
-    flex-direction: row;
-    position: fixed;
-    height: 44px;
-    background-color: #333; 
-  `;
+    //this.toggle = this.toggle.bind(this);
+  }
 
-  const TopBarContainer = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: none;
-    align-items: none;
-    flex-direction: row;
-    color: #fff;
-    letter-spacing: 1px;
-    padding: 0 10px;
-    @media (min-width: 1280px) {
-      .top-bar .container {
-      width: 1280px;
-      }
-    }
-  `;
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  };
 
-  const ContainerLeft = styled.div`
-    display: flex;
-    justify-content: none;
-    align-items: center;
-    flex-direction: row;
-    flex: 1;
-    font-size: 11px;
-  `;
 
-  const ContainerLeftSpan = styled.div`
-    cursor: pointer;
-    margin-right: 25%;
-    font-weight: bold;
-  `;
-
-  const ContainerCenter = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex: 3;
-    font-size: 9px;
-  `;
-
-  const ContainerCenterSpan = styled.div`
-    cursor: pointer;
-    margin-right: 5%;
-    &:last-child {
-      margin-right: 0;
-    }
-    &:hover {
-      text-decoration: underline;
-    }    
-  `;
-
-  const ContainerRight = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: row;
-    flex: 1;
-    font-size: 11px;
-    font-weight: bold;
-  `;
-
-  const ContainerRightSpan = styled.div`
-    cursor: pointer;
-  `;
-
+  render(){
   return (
-    <TopBar>
+    <TopBarDiv>
       <TopBarContainer>
         <ContainerLeft>
           <ContainerLeftSpan>TOPICS</ContainerLeftSpan><ContainerLeftSpan>SEARCH</ContainerLeftSpan>
@@ -96,11 +51,23 @@ const TopBar = () => {
           <ContainerCenterSpan>ANNOUNCEMENTS</ContainerCenterSpan>
         </ContainerCenter>
         <ContainerRight>
-          <ContainerRightSpan>LOG IN</ContainerRightSpan>
+          <ContainerRightSpan onClick={this.toggle}
+          >LOG IN</ContainerRightSpan>
         </ContainerRight>
       </TopBarContainer>
-    </TopBar>
+      <Modal
+        isOpen={this.state.modal}
+        toggle={this.toggle}
+      >
+        <Login
+
+        />
+      </Modal>
+
+
+    </TopBarDiv>
   )
+}
 };
 
 export default TopBar;
